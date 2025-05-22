@@ -1437,11 +1437,11 @@ export const typst: textmate.Grammar = {
     paramOrArgName,
     stringLiteral,
 
+    docComment,
     strictComments,
     blockComment,
     lineComment,
     strictLineComment,
-    docComment,
 
     mathIdentifier,
     mathBrace,
