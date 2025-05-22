@@ -318,13 +318,40 @@ const lineCommentInner = (strict: boolean): textmate.Pattern => {
 const strictLineComment = lineCommentInner(true);
 const lineComment = lineCommentInner(false);
 
-const docComment: textmate.Pattern = {
+const tidyCommentTypeAnnotation: textmate.Pattern = {
+  name: "meta.tidy.type-annotation.typst",
+  begin: /(->)\s*/,
+  end: /(?=$|\n)/,
+  beginCaptures: {
+    "1": { name: "punctuation.definition.tidy.type-annotation.typst" },
+  },
+  patterns: [
+    {
+      name: "entity.name.type.primitive.tidy.typst",
+      match: /(?<!\)|\]|\})\b(any|str|int|float|bool|type|length|content|array|dictionary|arguments)\b(?!-)/,
+    },
+    {
+      name: "keyword.operator.separator.pipe.tidy.typst",
+      match: /\|/,
+    },
+    {
+      name: "entity.name.type.custom.tidy.typst",
+      match: /(?<!\)|\]|\})\b[\p{XID_Start}_][\p{XID_Continue}_\-]*\b(?!-)/u,
+    }
+  ]
+}
+
+const tidyComment: textmate.Pattern = {
   name: "comment.line.tidy.typst",
   begin: /(\/\/\/)\s/,
   end: /(?=$|\n)/,
   beginCaptures: {
-    "0": { name: "punctuation.definition.comment.tidy.typst" },
-  }
+    "1": { name: "punctuation.definition.comment.tidy.typst" },
+  },
+  patterns: [
+    { include: "#docCommentTypeAnnotation" },
+    { include: "#markupMath" },
+  ]
 }
 
 const shebang = {
@@ -1437,11 +1464,12 @@ export const typst: textmate.Grammar = {
     paramOrArgName,
     stringLiteral,
 
-    docComment,
     strictComments,
     blockComment,
     lineComment,
     strictLineComment,
+    tidyCommentTypeAnnotation,
+    docComment: tidyComment,
 
     mathIdentifier,
     mathBrace,
