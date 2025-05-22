@@ -1431,7 +1431,7 @@ const funcCallOrPropAccess = (strict: boolean): textmate.Pattern => {
     name: "meta.expr.call.typst",
     begin: lookAhead(
       strict
-        ? new RegExp(/(\.)?/.source + IDENTIFIER.source + /(?=\(|\[)/.source)
+        ? new RegExp('(?:' + IDENTIFIER.source + '\.)*' + IDENTIFIER.source + /(?=\(|\[)/.source)
         : new RegExp(
             /(\.\s*)?/.source + IDENTIFIER.source + /\s*(?=\(|\[)/.source
           )
