@@ -1511,7 +1511,7 @@ export const typst: textmate.Grammar = {
     lineComment,
     strictLineComment,
     tidyCommentTypeAnnotation,
-    docComment: tidyComment,
+    tidyComment,
 
     mathIdentifier,
     mathBrace,
