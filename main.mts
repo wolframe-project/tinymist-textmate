@@ -12,8 +12,8 @@
 import * as textmate from "./textmate.mjs";
 import { blockRaw, blockRawGeneral, blockRawLangs, inlineRaw } from "./fenced.mjs";
 
-import * as fs from "fs";
-import * as path from "path";
+import * as fs from "node:fs";
+import * as path from "node:path";
 import {
   FIXED_LENGTH_LOOK_BEHIND,
   POLYFILL_P_XID,
@@ -317,6 +317,15 @@ const lineCommentInner = (strict: boolean): textmate.Pattern => {
 
 const strictLineComment = lineCommentInner(true);
 const lineComment = lineCommentInner(false);
+
+const docComment: textmate.Pattern = {
+  name: "comment.line.documentation.tidy.typst",
+  begin: /(\/\/\/)\s/,
+  end: /(?=$|\n)/,
+  beginCaptures: {
+    "0": { name: "punctuation.definition.comment.documentation.tidy.typst" },
+  }
+}
 
 const shebang = {
   name: "comment.line.shebang.typst",
@@ -1432,6 +1441,7 @@ export const typst: textmate.Grammar = {
     blockComment,
     lineComment,
     strictLineComment,
+    docComment,
 
     mathIdentifier,
     mathBrace,
