@@ -1462,7 +1462,11 @@ const funcCallOrPropAccess = (strict: boolean): textmate.Pattern => {
           },
         },
       },
-      { include: "#identifier" },
+      {
+        match: new RegExp(IDENTIFIER.source + /(?=\.)/.source),
+        name: "entity.name.module.typst",
+      },
+      //{ include: "#identifier" },
       // empty args
       {
         // name: "meta.call.args.typst",
@@ -1539,7 +1543,7 @@ export const typst: textmate.Grammar = {
     /* ...blockRawLangs.reduce((acc: Record<string, textmate.Pattern>, lang) => {
       acc[lang.lang.replace(/\./g, "_")] = lang;
       return acc;
-    }, {}), */
+    }, {}), // Languages for the fenced blocks */
     blockRawGeneral,
 
     expression,
