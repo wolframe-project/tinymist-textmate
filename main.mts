@@ -1463,7 +1463,7 @@ const funcCallOrPropAccess = (strict: boolean): textmate.Pattern => {
         },
       },
       {
-        match: new RegExp(IDENTIFIER.source + /(?=\.)/.source),
+        match: IDENTIFIER,
         name: "entity.name.module.typst",
       },
       //{ include: "#identifier" },
