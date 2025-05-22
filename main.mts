@@ -283,11 +283,11 @@ const constants: textmate.Pattern = {
 type _CommentPatternPart = never;
 
 const strictComments: textmate.Pattern = {
-  patterns: [{ include: "#blockComment" }, { include: "#strictLineComment" }],
+  patterns: [{ include: "#blockComment" }, {include: "#docComment"}, { include: "#strictLineComment" }],
 };
 
 const comments: textmate.Pattern = {
-  patterns: [{ include: "#blockComment" }, { include: "#lineComment" }],
+  patterns: [{ include: "#blockComment" }, {include: "#docComment"}, { include: "#lineComment" }],
 };
 
 const blockComment: textmate.Pattern = {
