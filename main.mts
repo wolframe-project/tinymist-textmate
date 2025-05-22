@@ -1560,7 +1560,7 @@ export const typst: textmate.Grammar = {
     ...showStatement().repository,
     callArgs,
     patternOrArgsBody,
-    strictFuncCallOrPropAccess: funcCallOrPropAccess(true),
+    strictFuncCallOrPropAccess: funcCallOrPropAccess(false),
     // todo: distinguish strict and non-strict for markup and code mode.
     // funcCallOrPropAccess: funcCallOrPropAccess(false),
   },
