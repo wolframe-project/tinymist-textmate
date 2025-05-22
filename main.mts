@@ -319,11 +319,11 @@ const strictLineComment = lineCommentInner(true);
 const lineComment = lineCommentInner(false);
 
 const docComment: textmate.Pattern = {
-  name: "comment.line.documentation.tidy.typst",
+  name: "comment.line.tidy.typst",
   begin: /(\/\/\/)\s/,
   end: /(?=$|\n)/,
   beginCaptures: {
-    "0": { name: "punctuation.definition.comment.documentation.tidy.typst" },
+    "0": { name: "punctuation.definition.comment.tidy.typst" },
   }
 }
 
