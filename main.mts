@@ -297,7 +297,7 @@ const strictComments: textmate.Pattern = {
   patterns: [
     { include: "#blockComment" },
     { include: "#tidyCommentTypeAnnotation" },
-    { include: "#tidyComment" },
+    { include: "#docComment" },
     { include: "#strictLineComment" },
   ],
 };
@@ -306,7 +306,7 @@ const comments: textmate.Pattern = {
   patterns: [
     { include: "#blockComment" },
     { include: "#tidyCommentTypeAnnotation" },
-    { include: "#tidyComment" },
+    { include: "#docComment" },
     { include: "#lineComment" },
   ],
 };
@@ -1511,7 +1511,7 @@ export const typst: textmate.Grammar = {
     lineComment,
     strictLineComment,
     tidyCommentTypeAnnotation,
-    tidyComment,
+    docComment: tidyComment,
 
     mathIdentifier,
     mathBrace,
