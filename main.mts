@@ -327,8 +327,7 @@ const tidyCommentTypeAnnotation: textmate.Pattern = {
   },
   patterns: [
     {
-      name: "entity.name.type.primitive.tidy.typst",
-      match: /(?<!\)|\]|\})\b(any|str|int|float|bool|type|length|content|array|dictionary|arguments)\b(?!-)/,
+      include: "#primitiveTypes",
     },
     {
       name: "keyword.operator.separator.pipe.tidy.typst",
@@ -349,7 +348,7 @@ const tidyComment: textmate.Pattern = {
     "1": { name: "punctuation.definition.comment.tidy.typst" },
   },
   patterns: [
-    { include: "#docCommentTypeAnnotation" },
+    { include: "#tidyCommentTypeAnnotation" },
     { include: "#markupMath" },
   ]
 }

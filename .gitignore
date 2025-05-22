@@ -2,3 +2,5 @@
 dist
 tests/official-testing
 tests/packages
+node_modules
+*.lock*
